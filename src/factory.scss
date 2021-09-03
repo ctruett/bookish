@@ -1,0 +1,277 @@
+@import "../node_modules/tachyons-sass/tachyons.scss";
+
+.smallcaps {
+  @extend .ttu;
+  @extend .tracked;
+}
+
+.invert {
+  @extend .bg-black;
+  @extend .white;
+}
+
+.i {
+  @extend .i;
+  letter-spacing: 0.25px;
+}
+
+.underline {
+  @extend .underline;
+  text-underline-offset: 3px;
+}
+
+.center-inline {
+  @extend .dib;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+body {
+  @extend .f4;
+  @extend .baskerville;
+  @extend .pt3;
+  line-height: 1.3;
+  // background-image: linear-gradient(45deg, #ffffff 40%, #eeeeee 40%, #eeeeee 50%, #ffffff 50%, #ffffff 90%, #eeeeee 90%, #eeeeee 100%);
+  // background-size: 7px 7px;
+}
+
+article {
+  @extend .center;
+  @extend .measure;
+}
+
+[border] {
+  border: 1px solid black;
+  box-shadow: 5px 5px #000;
+  @extend .ph5;
+  @extend .pv4;
+}
+
+[border-double] {
+  border: 3px double black;
+  box-shadow: inset 8px 8px white, inset 8px -8px white, inset -8px 8px white,
+    inset -8px -8px white, inset 9px 9px black, inset 9px -9px black,
+    inset -9px 9px black, inset -9px -9px black, 5px 5px #000;
+  @extend .ph5;
+  @extend .pv4;
+}
+
+header[border-double] {
+  @extend .center-inline;
+  @extend .pt5;
+  @extend .ph6;
+}
+
+blockquote[border] {
+  @extend .mt4;
+  @extend .mb5;
+  @extend .pb5;
+  @extend .pt5;
+  @extend .measure-narrow;
+  &[right] {
+    margin-left: 2em;
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+}
+
+header {
+  @extend .mt5;
+  @extend .mb6;
+  &[dots] {
+    background-image: radial-gradient(#ddd 1px, transparent 1px),
+      radial-gradient(#ddd 1px, transparent 1px);
+    background-size: calc(8 * 1px) calc(8 * 1px);
+    background-position: 0 0, calc(4 * 5px) calc(4 * 5px);
+  }
+  p {
+    border-top: 1px solid #888;
+    @extend .pt2;
+    // @extend .i;
+    @extend .f5;
+    @extend .tc;
+    @extend .ma0;
+    @extend .lh-copy;
+    @extend .mw5;
+    @extend .smallcaps;
+  }
+  counter-reset: h3;
+}
+
+section {
+  // @extend .mb6;
+  // @extend .bg-white;
+}
+
+h1 {
+  @extend .f1;
+  @extend .i;
+  @extend .fw4;
+  @extend .tc;
+  @extend .mt0;
+  @extend .mb4;
+  line-height: 1.2;
+  small {
+    @extend .lh-solid;
+    @extend .db;
+    @extend .smallcaps;
+    @extend .f6;
+    @extend .fs-normal;
+    @extend .mt3;
+    @extend .mb2;
+    &::before,
+    &::after {
+      content: "\2014";
+      @extend .ph2;
+    }
+  }
+}
+
+h3 {
+  @extend .smallcaps;
+  @extend .tc;
+  @extend .fw4;
+  @extend .f3;
+  @extend .center-inline;
+  @extend .lh-solid;
+  @extend .dib;
+  @extend .ph2;
+  @extend .mt6;
+  @extend .mb5;
+  &:first-of-type {
+    @extend .mt4;
+  }
+  &::before {
+    content: "Chapter " counter(h3);
+    counter-increment: h3;
+    @extend .f6;
+    @extend .db;
+    @extend .tc;
+    @extend .pb2;
+    @extend .mb2;
+    border-bottom: 3px double #888;
+  }
+}
+
+h3 + blockquote {
+  @extend .mt3;
+  @extend .mb5;
+}
+
+h4 {
+  @extend .fw4;
+  @extend .f3;
+  @extend .mb2;
+  @extend .lh-solid;
+  @extend .i;
+  @extend .underline;
+}
+
+p {
+  @extend .mv0;
+  hyphens: auto;
+  text-indent: 0;
+  & + p {
+    text-indent: 2rem;
+  }
+}
+section[drop] p:first-of-type:first-letter {
+  @extend .invert;
+  @extend .f1;
+  @extend .fl;
+  @extend .lh-solid;
+  @extend .mr2;
+  @extend .ph2;
+  @extend .mt1;
+}
+
+blockquote {
+  @extend .baskerville;
+  @extend .f4;
+  @extend .mv4;
+  @extend .mr0;
+  @extend .mh0;
+  @extend .pl5;
+  @extend .tl;
+  @extend .measure;
+  @extend .center;
+  &[center] {
+    @extend .tc;
+    @extend .center;
+    @extend .mw6;
+  }
+  &[right] {
+    float: right;
+    @extend .w-40;
+    margin-right: 0rem;
+    @extend .mv5;
+    @extend .ml4;
+  }
+  hanging-punctuation: first last;
+  small {
+    @extend .fs-normal;
+    @extend .dib;
+    @extend .mt1;
+    &::before {
+      content: "\2014";
+      @extend .ph1;
+    }
+  }
+}
+
+ul {
+  @extend .mt2;
+  @extend .mb4;
+  list-style-type: none;
+  li::before {
+    content: "\2022";
+    @extend .dib;
+    margin-left: -1.25em;
+    padding-right: 0.75em;
+  }
+}
+
+ol {
+  @extend .mt2;
+  @extend .mb4;
+}
+
+hr {
+  @extend .bw0;
+  @extend .tc;
+  @extend .f3;
+  @extend .mt5;
+  @extend .mb6;
+  &::before {
+    content: "* * *";
+  }
+}
+
+table {
+  @extend .mt0;
+  @extend .mb5;
+  @extend .center;
+  @extend .measure-narrow;
+  @extend .w-100;
+  th {
+    @extend .fw4;
+    @extend .pr6;
+    @extend .tl;
+    @extend .mw4;
+  }
+  td {
+    @extend .pr4;
+    &:last-child {
+      @extend .pr0;
+      @extend .pl3;
+      @extend .tr;
+    }
+  }
+  & + small {
+    @extend .db;
+    @extend .measure;
+    @extend .center;
+    @extend .mb0;
+  }
+}

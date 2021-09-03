@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Factory</title>
+  <link rel="stylesheet" href="dist/factory.css" type="text/css" media="all">
+  <script>
+    function includeHTML() {
+      var z, i, elmnt, file, xhttp;
+      /* Loop through a collection of all HTML elements: */
+      z = document.getElementsByTagName("*");
+      for (i = 0; i < z.length; i++) {
+        elmnt = z[i];
+        /*search for elements with a certain atrribute:*/
+        file = elmnt.getAttribute("include");
+        if (file) {
+          /* Make an HTTP request using the attribute value as the file name: */
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+              if (this.status == 200) {
+                elmnt.innerHTML = this.responseText;
+              }
+              if (this.status == 404) {
+                elmnt.innerHTML = "Page not found.";
+              }
+              /* Remove the attribute, and call this function once more: */
+              elmnt.removeAttribute("include");
+              includeHTML();
+            }
+          }
+          xhttp.open("GET", file, true);
+          xhttp.send();
+          /* Exit the function: */
+          return;
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <main>
+    <article>
+
+      <header border-double>
+        <h1><small>A.W. Pink</smalL>The Attributes <br> of God</h1>
+      </header>
+
+      <div include="preface.html"></div>
+      <hr>
+      <div include="chapter-1.html"></div>
+      <hr>
+      <div include="chapter-2.html"></div>
+      <hr>
+      <div include="chapter-3.html"></div>
+      <hr>
+      <div include="chapter-4.html"></div>
+      <hr>
+      <div include="chapter-5.html"></div>
+      <hr>
+      <div include="chapter-6.html"></div>
+      <hr>
+      <div include="chapter-7.html"></div>
+      <hr>
+      <div include="chapter-8.html"></div>
+      <hr>
+      <div include="chapter-9.html"></div>
+      <hr>
+      <div include="chapter-10.html"></div>
+      <hr>
+      <div include="chapter-11.html"></div>
+      <hr>
+      <div include="chapter-12.html"></div>
+      <hr>
+      <div include="chapter-13.html"></div>
+      <hr>
+      <div include="chapter-14.html"></div>
+      <hr>
+      <div include="chapter-15.html"></div>
+      <hr>
+      <div include="chapter-16.html"></div>
+      <hr>
+      <div include="chapter-17.html"></div>
+      <hr>
+      <div include="chapter-18.html"></div>
+      <hr>
+      <div include="chapter-19.html"></div>
+      <hr>
+      <div include="index-of-authors-quoted.html"></div>
+
+    </article>
+  </main>
+
+  <script>
+    includeHTML();
+  </script>
+</body>
+
+</html>
